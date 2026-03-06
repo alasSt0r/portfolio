@@ -1,0 +1,122 @@
+@import "tailwindcss";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+
+@theme {
+  /* Phosphor green — pour les accents CRT */
+  --color-p:         #39ff6e;
+  --color-p-dim:     #22c55e;
+  --color-p-dark:    #052e16;
+  --color-p-glow:    rgba(57, 255, 110, 0.45);
+
+  /* Desktop — bleu-teal sombre mais lisible, façon Amiga/Win3.1 */
+  --color-desk:      #1a3a4a;
+  --color-desk-2:    #142e3c;
+
+  /* Fenêtres */
+  --color-win-bg:    #e8e8e4;   /* gris clair cassé, papier */
+  --color-win-title: #2a5298;   /* bleu Windows 95 */
+  --color-win-title-end: #1a3a7a;
+  --color-win-border: #888880;
+
+  /* Taskbar */
+  --color-bar:       #c0c0c0;   /* gris argent Windows */
+
+  /* Texte dans fenêtres */
+  --color-text:      #1a1a1a;
+  --color-text-dim:  #555550;
+
+  --font-ui:   'Inter', system-ui, sans-serif;
+  --font-mono: 'Share Tech Mono', 'Courier New', monospace;
+  --font-crt:  'VT323', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body, #root {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: #000;
+  margin: 0; padding: 0;
+}
+
+body {
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--color-win-title); color: #fff; }
+::-webkit-scrollbar { width: 14px; }
+::-webkit-scrollbar-track { background: #d0d0cc; border-left: 1px solid #aaa; }
+::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border: 1px solid #888;
+  box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #666;
+}
+
+/* ── CRT scanlines ── */
+.crt-scanlines::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px, transparent 3px,
+    rgba(0,0,0,0.04) 3px, rgba(0,0,0,0.04) 4px
+  );
+  pointer-events: none;
+  z-index: 50;
+  animation: scanroll 6s linear infinite;
+}
+
+/* ── CRT vignette — allégée ── */
+.crt-vignette::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    transparent 60%,
+    rgba(0,0,0,0.28) 100%
+  );
+  pointer-events: none;
+  z-index: 51;
+}
+
+/* ── Flicker très subtil ── */
+.crt-flicker { animation: flicker 12s infinite; }
+
+/* ── Phosphor glow text (accents seulement) ── */
+.glow    { text-shadow: 0 0 8px var(--color-p-glow), 0 0 20px rgba(57,255,110,0.2); }
+.glow-sm { text-shadow: 0 0 5px var(--color-p-glow); }
+
+/* ── Blink ── */
+.blink { animation: blink 1s step-end infinite; }
+
+/* ── Win95-style raised/sunken borders ── */
+.raised {
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #666;
+  border-bottom: 2px solid #666;
+}
+.sunken {
+  border-top: 2px solid #666;
+  border-left: 2px solid #666;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+}
+
+/* ── Keyframes ── */
+@keyframes scanroll {
+  from { background-position: 0 0; }
+  to   { background-position: 0 200px; }
+}
+@keyframes flicker {
+  0%,88%,90%,92%,100% { opacity: 1; }
+  89%  { opacity: 0.97; }
+  91%  { opacity: 0.98; }
+}
+@keyframes blink {
+  0%,100% { opacity: 1; }
+  50%     { opacity: 0; }
+}
