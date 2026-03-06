@@ -2,8 +2,28 @@ import { useState, useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Window from './Window'
 import ContactApp from './apps/ContactApp'
+import AboutApp from './apps/AboutApp'
+import ProjectsApp from './apps/ProjectsApp'
 
 const APPS = [
+  {
+    id: 'about',
+    label: 'About',
+    icon: '👾',
+    title: 'About — Marius Wartel',
+    component: AboutApp,
+    defaultSize: { width: 420, height: 380 },
+    defaultPosition: { x: 60, y: 50 },
+  },
+  {
+    id: 'projects',
+    label: 'Projects',
+    icon: '🗂️',
+    title: 'Projects',
+    component: ProjectsApp,
+    defaultSize: { width: 440, height: 400 },
+    defaultPosition: { x: 120, y: 80 },
+  },
   {
     id: 'contact',
     label: 'Contact',
@@ -11,7 +31,7 @@ const APPS = [
     title: 'Contact',
     component: ContactApp,
     defaultSize: { width: 420, height: 310 },
-    defaultPosition: { x: 100, y: 70 },
+    defaultPosition: { x: 180, y: 110 },
   },
 ]
 
