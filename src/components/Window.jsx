@@ -1,4 +1,4 @@
-import { useRef, useState, useCallback } from 'react'
+import { useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
 
 export default function Window({
@@ -9,13 +9,14 @@ export default function Window({
   defaultPosition = { x: 80, y: 60 },
   defaultSize = { width: 480, height: 320 },
   onClose,
+  onMinimize,
   onFocus,
   isFocused,
+  isMinimized,
   zIndex,
 }) {
-  const [pos, setPos]         = useState(defaultPosition)
-  const [size, setSize]       = useState(defaultSize)
-  const [minimized, setMin]   = useState(false)
+  const [pos, setPos]   = useState(defaultPosition)
+  const [size, setSize] = useState(defaultSize)
 
   // ── Drag ──
   const onDragStart = useCallback((e) => {
@@ -44,15 +45,20 @@ export default function Window({
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.93, y: 10 }}
-      animate={{ opacity: 1, scale: 1,    y: 0  }}
-      exit={{    opacity: 0, scale: 0.95,  y: 6  }}
+      animate={{
+        opacity: isMinimized ? 0 : 1,
+        scale:   isMinimized ? 0.85 : 1,
+        y:       isMinimized ? 20 : 0,
+        pointerEvents: isMinimized ? 'none' : 'auto',
+      }}
+      exit={{ opacity: 0, scale: 0.95, y: 6 }}
       transition={{ duration: 0.14, ease: [0.2, 0, 0.2, 1] }}
       className="absolute flex flex-col"
       style={{
         left: pos.x, top: pos.y,
         width:  size.width,
-        height: minimized ? 28 : size.height,
-        zIndex,
+        height: size.height,
+        zIndex: isMinimized ? -1 : zIndex,
         /* Fenêtre avec look OS rétro — fond gris clair */
         background: isFocused
           ? 'linear-gradient(180deg, #f0f0ec 0%, #e4e4e0 100%)'
@@ -100,7 +106,7 @@ export default function Window({
 
         {/* Controls */}
         <div className="flex gap-1" data-nodrag="true">
-          <TitleBtn onClick={() => setMin(v => !v)} title="Minimize">
+          <TitleBtn onClick={() => onMinimize(id)} title="Minimize">
             <span style={{ display: 'block', width: 8, height: 2, background: '#333', marginTop: 'auto', marginBottom: 1 }} />
           </TitleBtn>
           <TitleBtn onClick={() => onClose(id)} title="Close" isClose>
@@ -113,52 +119,43 @@ export default function Window({
       </div>
 
       {/* ── Body ── */}
-      {!minimized && (
-        <div
-          className="flex-1 overflow-auto"
-          style={{
-            background: '#fafaf8',
-            padding: '16px 18px',
-          }}
-        >
-          {children}
-        </div>
-      )}
+      <div
+        className="flex-1 overflow-auto"
+        style={{ background: '#fafaf8', padding: '16px 18px' }}
+      >
+        {children}
+      </div>
 
       {/* ── Status bar ── */}
-      {!minimized && (
-        <div
-          style={{
-            height: 18,
-            background: '#d4d4d0',
-            borderTop: '1px solid #b0b0ac',
-            display: 'flex',
-            alignItems: 'center',
-            paddingLeft: 8,
-            flexShrink: 0,
-          }}
-        >
-          <span style={{ fontSize: 10, color: '#666', fontFamily: 'var(--font-ui)' }}>
-            Ready
-          </span>
-        </div>
-      )}
+      <div
+        style={{
+          height: 18,
+          background: '#d4d4d0',
+          borderTop: '1px solid #b0b0ac',
+          display: 'flex',
+          alignItems: 'center',
+          paddingLeft: 8,
+          flexShrink: 0,
+        }}
+      >
+        <span style={{ fontSize: 10, color: '#666', fontFamily: 'var(--font-ui)' }}>
+          Ready
+        </span>
+      </div>
 
       {/* ── Resize ── */}
-      {!minimized && (
-        <div
-          onMouseDown={onResizeStart}
-          data-nodrag="true"
-          className="absolute bottom-0 right-0 cursor-se-resize"
-          style={{ width: 18, height: 18, zIndex: 20 }}
-        >
-          <svg width="18" height="18" style={{ position:'absolute', bottom:0, right:0 }}>
-            <line x1="18" y1="6"  x2="6"  y2="18" stroke="#aaa" strokeWidth="1"/>
-            <line x1="18" y1="11" x2="11" y2="18" stroke="#aaa" strokeWidth="1"/>
-            <line x1="18" y1="16" x2="16" y2="18" stroke="#aaa" strokeWidth="1"/>
-          </svg>
-        </div>
-      )}
+      <div
+        onMouseDown={onResizeStart}
+        data-nodrag="true"
+        className="absolute bottom-0 right-0 cursor-se-resize"
+        style={{ width: 18, height: 18, zIndex: 20 }}
+      >
+        <svg width="18" height="18" style={{ position: 'absolute', bottom: 0, right: 0 }}>
+          <line x1="18" y1="6"  x2="6"  y2="18" stroke="#aaa" strokeWidth="1"/>
+          <line x1="18" y1="11" x2="11" y2="18" stroke="#aaa" strokeWidth="1"/>
+          <line x1="18" y1="16" x2="16" y2="18" stroke="#aaa" strokeWidth="1"/>
+        </svg>
+      </div>
     </motion.div>
   )
 }

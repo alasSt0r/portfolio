@@ -96,12 +96,21 @@ export default function Desktop() {
   const [selectedIcon,setSelectedIcon]= useState(null)
 
   const openApp = (appId) => {
-    if (windows.find(w => w.id === appId)) { focusWindow(appId); return }
+    const existing = windows.find(w => w.id === appId)
+    if (existing) {
+      // Déjà ouvert : restaure si minimisé, sinon focus
+      if (existing.minimized) {
+        restoreWindow(appId)
+      } else {
+        focusWindow(appId)
+      }
+      return
+    }
     const app = APPS.find(a => a.id === appId)
     if (!app) return
     const nextZ = topZ + 1
     setTopZ(nextZ)
-    setWindows(prev => [...prev, { ...app, zIndex: nextZ }])
+    setWindows(prev => [...prev, { ...app, zIndex: nextZ, minimized: false }])
     setFocusedId(appId)
   }
 
@@ -110,11 +119,37 @@ export default function Desktop() {
     setFocusedId(null)
   }
 
+  const minimizeWindow = (id) => {
+    setWindows(prev => prev.map(w => w.id === id ? { ...w, minimized: true } : w))
+    setFocusedId(null)
+  }
+
+  const restoreWindow = (id) => {
+    const nextZ = topZ + 1
+    setTopZ(nextZ)
+    setWindows(prev => prev.map(w => w.id === id ? { ...w, minimized: false, zIndex: nextZ } : w))
+    setFocusedId(id)
+  }
+
   const focusWindow = (id) => {
     const nextZ = topZ + 1
     setTopZ(nextZ)
     setWindows(prev => prev.map(w => w.id === id ? { ...w, zIndex: nextZ } : w))
     setFocusedId(id)
+  }
+
+  // Clic sur un onglet de la taskbar
+  const handleTaskbarClick = (id) => {
+    const win = windows.find(w => w.id === id)
+    if (!win) return
+    if (win.minimized) {
+      restoreWindow(id)
+    } else if (focusedId === id) {
+      // Déjà au premier plan → minimise
+      minimizeWindow(id)
+    } else {
+      focusWindow(id)
+    }
   }
 
   return (
@@ -158,8 +193,10 @@ export default function Desktop() {
                 defaultPosition={win.defaultPosition}
                 defaultSize={win.defaultSize}
                 onClose={closeWindow}
+                onMinimize={minimizeWindow}
                 onFocus={focusWindow}
                 isFocused={focusedId === win.id}
+                isMinimized={win.minimized}
                 zIndex={win.zIndex}
               >
                 <AppComponent />
@@ -207,18 +244,18 @@ export default function Desktop() {
           {windows.map(win => (
             <button
               key={win.id}
-              onClick={() => focusWindow(win.id)}
+              onClick={() => handleTaskbarClick(win.id)}
               style={{
                 height: 24,
                 padding: '0 10px',
                 fontFamily: 'var(--font-ui)',
                 fontSize: 11,
-                fontWeight: focusedId === win.id ? 700 : 500,
+                fontWeight: focusedId === win.id && !win.minimized ? 700 : 500,
                 color: '#111',
                 cursor: 'pointer',
                 background: '#c0c0c0',
                 border: '1px solid',
-                borderColor: focusedId === win.id
+                borderColor: focusedId === win.id && !win.minimized
                   ? '#888 #fff #fff #888'
                   : '#fff #888 #888 #fff',
                 display: 'flex',
@@ -228,6 +265,7 @@ export default function Desktop() {
                 maxWidth: 160,
                 overflow: 'hidden',
                 whiteSpace: 'nowrap',
+                opacity: win.minimized ? 0.7 : 1,
               }}
             >
               <span style={{ fontSize: 13, flexShrink: 0 }}>{win.icon}</span>

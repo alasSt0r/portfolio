@@ -1,10 +1,10 @@
 export default function ContactApp() {
   const rows = [
     { label: 'Name',     value: 'Marius Wartel' },
-    { label: 'Email',    value: 'marius@wartel.dev',         href: 'mailto:marius@wartel.dev' },
-    { label: 'GitHub',   value: 'github.com/mwartel',        href: 'https://github.com/mwartel' },
+    { label: 'Email',    value: 'marius.wartel@gmail.com',         href: 'mailto:marius.wartel@gmail.com' },
+    { label: 'GitHub',   value: 'github.com/alasSt0r',        href: 'https://github.com/alasSt0r' },
     { label: 'LinkedIn', value: 'linkedin.com/in/mwartel',   href: 'https://linkedin.com/in/mwartel' },
-    { label: 'Location', value: 'France' },
+    { label: 'Location', value: 'France, Lille' },
   ]
 
   return (
