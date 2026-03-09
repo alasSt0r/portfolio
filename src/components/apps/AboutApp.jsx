@@ -1,9 +1,9 @@
 export default function AboutApp() {
   const skills = [
-    { cat: 'Languages',  items: ['JavaScript', 'TypeScript', 'Python', 'C', 'Rust'] },
+    { cat: 'Languages',  items: ['JavaScript', 'TypeScript', 'Java', 'Python' ] },
     { cat: 'Frontend',   items: ['React', 'Vite', 'Tailwind CSS', 'Framer Motion'] },
-    { cat: 'Backend',    items: ['Node.js', 'Express', 'FastAPI', 'PostgreSQL'] },
-    { cat: 'Tools',      items: ['Git', 'Docker', 'Linux', 'Figma'] },
+    { cat: 'Backend',    items: ['Node.js', 'Springboot', 'PostgreSQL'] },
+    { cat: 'Tools',      items: ['Git', 'Docker', 'Linux', 'A.I'] },
   ]
 
   return (
@@ -38,7 +38,7 @@ export default function AboutApp() {
       <p style={{ fontSize: 13, color: '#333', lineHeight: 1.65, marginBottom: 16 }}>
         Passionate about software development and digital interfaces.
         I enjoy crafting polished user experiences, exploring new
-        technologies, and building creative side projects. Always learning.
+        technologies, and building creative side projects. Always learning new things and looking for exciting opportunities to grow and collaborate. I also enjoy Volleyball on my free time !
       </p>
 
       <div style={{ height: 1, background: '#e0e0dc', marginBottom: 14 }} />
