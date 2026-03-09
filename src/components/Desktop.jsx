@@ -4,6 +4,7 @@ import Window from './Window'
 import ContactApp from './apps/ContactApp'
 import AboutApp from './apps/AboutApp'
 import ProjectsApp from './apps/ProjectsApp'
+import TechWatchApp from './apps/TechWatchApp'
 
 const APPS = [
   {
@@ -32,6 +33,15 @@ const APPS = [
     component: ContactApp,
     defaultSize: { width: 420, height: 310 },
     defaultPosition: { x: 180, y: 110 },
+  },
+  {
+    id: 'techwatch',
+    label: 'Tech Watch',
+    icon: '📡',
+    title: 'Tech Watch — Veille Technologique',
+    component: TechWatchApp,
+    defaultSize: { width: 640, height: 420 },
+    defaultPosition: { x: 140, y: 70 },
   },
 ]
 function DesktopIcon({ app, onOpen, isSelected, onSelect }) {
