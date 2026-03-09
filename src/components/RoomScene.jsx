@@ -2,32 +2,13 @@
    ROOM SCENE — chambre rétro en CSS
    Vue de face, écran CRT au centre sur un bureau
 ───────────────────────────────────────────── */
-import { useRef, useState, useLayoutEffect } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 
 /* Hauteur du sol en % du bas */
 const SOL = 8
 
 export default function RoomScene({ children, zoomedIn, onZoomDone }) {
-  const screenRef  = useRef(null)
-  const [zoomScale, setZoomScale]   = useState(1)
-  const [origin,    setOrigin]      = useState('50% 50%')
-
-  useLayoutEffect(() => {
-    if (!screenRef.current) return
-    const rect   = screenRef.current.getBoundingClientRect()
-    // Max pour que les deux axes couvrent entièrement le viewport
-    // + 10% de marge pour éliminer tout fond résiduel
-    const scaleX = (window.innerWidth  / rect.width)  * 1.1
-    const scaleY = (window.innerHeight / rect.height) * 1.1
-    setZoomScale(Math.max(scaleX, scaleY))
-
-    // Centre du moniteur en coordonnées viewport
-    const cx = rect.left + rect.width  / 2
-    const cy = rect.top  + rect.height / 2
-    setOrigin(`${cx}px ${cy}px`)
-  }, [])
-
   return (
     <motion.div
       style={{
@@ -35,17 +16,32 @@ export default function RoomScene({ children, zoomedIn, onZoomDone }) {
         inset: 0,
         overflow: 'hidden',
         background: '#1a1208',
-        transformOrigin: origin,
-      }}
-      animate={zoomedIn ? {
-        scale: zoomScale,
-      } : {
-        scale: 1,
+        transformOrigin: '50% 50%',
       }}
       initial={false}
-      transition={{ duration: 1.4, ease: [0.76, 0, 0.24, 1] }}
-      onAnimationComplete={() => { if (zoomedIn) onZoomDone?.() }}
+      animate={{ scale: zoomedIn ? 1.06 : 1 }}
+      transition={zoomedIn
+        ? { duration: 0.55, ease: [0.4, 0, 1, 1] }
+        : { duration: 0 }
+      }
     >
+      {/* ── Flash blanc CRT — overlay de transition ── */}
+      <motion.div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'radial-gradient(ellipse at 50% 50%, #ffffff 0%, #e8f0ff 40%, #c0d0ff 100%)',
+          zIndex: 100,
+          pointerEvents: 'none',
+        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: zoomedIn ? 1 : 0 }}
+        transition={zoomedIn
+          ? { duration: 0.45, ease: [0.4, 0, 1, 1] }
+          : { duration: 0 }
+        }
+        onAnimationComplete={() => { if (zoomedIn) onZoomDone?.() }}
+      />
       {/* ══ MUR DU FOND ══ */}
       <div style={{
         position: 'absolute',
@@ -134,7 +130,6 @@ export default function RoomScene({ children, zoomedIn, onZoomDone }) {
 
       {/* ══ L'ÉCRAN CRT ══ */}
       <div
-        ref={screenRef}
         style={{
           position: 'absolute',
           left: '50%',
