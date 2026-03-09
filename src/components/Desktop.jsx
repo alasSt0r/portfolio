@@ -103,6 +103,7 @@ function Clock() {
       fontWeight: 500,
       color: '#222',
       letterSpacing: '0.05em',
+      fontVariantNumeric: 'tabular-nums',
     }}>
       {pad(time.getHours())}:{pad(time.getMinutes())}:{pad(time.getSeconds())}
     </span>
@@ -297,7 +298,14 @@ export default function Desktop() {
         {/* System tray */}
         <div
           className="sunken flex items-center gap-2 px-2"
-          style={{ height: 24, marginLeft: 'auto', flexShrink: 0 }}
+          style={{
+            height: 24,
+            marginLeft: 'auto',
+            flexShrink: 0,
+            width: '100px',
+            justifyContent: 'space-between',
+
+          }}
         >
           <span style={{ fontSize: 12 }}>🔊</span>
           <Clock />

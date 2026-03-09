@@ -17,7 +17,6 @@ If you are developing a production application, we recommend using TypeScript wi
 
 
 ## TODO
- - vrai zoom
  - case des secondes ne change pas de taille
  - apparition de l'écran bleu rapide apres le boot
  - traduire en anglais
