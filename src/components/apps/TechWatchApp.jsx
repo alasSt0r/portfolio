@@ -22,8 +22,13 @@ function formatDate(iso) {
 }
 
 export default function TechWatchApp() {
+  const sortedArticles = useMemo(
+    () => [...articles].sort((a, b) => new Date(b.date) - new Date(a.date)),
+    []
+  )
+
   const [activeTag, setActiveTag]     = useState('All')
-  const [selectedId, setSelectedId]   = useState(articles[0]?.id ?? null)
+  const [selectedId, setSelectedId]   = useState(sortedArticles[0]?.id ?? null)
 
   const allTags = useMemo(() => {
     const set = new Set()
@@ -33,12 +38,12 @@ export default function TechWatchApp() {
 
   const filtered = useMemo(() =>
     activeTag === 'All'
-      ? articles
-      : articles.filter(a => a.tags.includes(activeTag)),
-    [activeTag]
+      ? sortedArticles
+      : sortedArticles.filter(a => a.tags.includes(activeTag)),
+    [activeTag, sortedArticles]
   )
 
-  const selected = articles.find(a => a.id === selectedId) ?? filtered[0] ?? null
+  const selected = sortedArticles.find(a => a.id === selectedId) ?? filtered[0] ?? null
 
   // If selected article is not in filtered list, reset selection
   const displaySelected = filtered.find(a => a.id === selectedId)
