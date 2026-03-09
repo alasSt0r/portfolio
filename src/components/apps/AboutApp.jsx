@@ -9,7 +9,7 @@ export default function AboutApp() {
   return (
     <div style={{ fontFamily: 'var(--font-ui)', color: 'var(--color-text)', overflowY: 'auto', height: '100%' }}>
 
-      {/* Header */}
+      
       <div className="flex items-center gap-3 mb-4">
         <div style={{
           width: 44, height: 44,
@@ -34,16 +34,16 @@ export default function AboutApp() {
 
       <div style={{ height: 1, background: '#e0e0dc', marginBottom: 14 }} />
 
-      {/* Bio */}
+      
       <p style={{ fontSize: 13, color: '#333', lineHeight: 1.65, marginBottom: 16 }}>
-        Passionné de développement logiciel et d'interfaces digitales.
-        J'aime construire des expériences utilisateur soignées, explorer les nouvelles
-        technologies et bricoler des projets créatifs. Toujours en train d'apprendre.
+        Passionate about software development and digital interfaces.
+        I enjoy crafting polished user experiences, exploring new
+        technologies, and building creative side projects. Always learning.
       </p>
 
       <div style={{ height: 1, background: '#e0e0dc', marginBottom: 14 }} />
 
-      {/* Skills */}
+      
       <div style={{ fontSize: 11, fontWeight: 600, color: '#888', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 10 }}>
         Skills
       </div>

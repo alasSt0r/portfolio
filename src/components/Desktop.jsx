@@ -34,8 +34,6 @@ const APPS = [
     defaultPosition: { x: 180, y: 110 },
   },
 ]
-
-// ── Icône de bureau ──
 function DesktopIcon({ app, onOpen, isSelected, onSelect }) {
   return (
     <motion.div
@@ -46,7 +44,7 @@ function DesktopIcon({ app, onOpen, isSelected, onSelect }) {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.97 }}
     >
-      {/* Icon container */}
+      
       <div
         style={{
           width: 48, height: 48,
@@ -66,7 +64,7 @@ function DesktopIcon({ app, onOpen, isSelected, onSelect }) {
       >
         {app.icon}
       </div>
-      {/* Label */}
+      
       <span
         style={{
           fontFamily: 'var(--font-ui)',
@@ -87,8 +85,6 @@ function DesktopIcon({ app, onOpen, isSelected, onSelect }) {
     </motion.div>
   )
 }
-
-// ── Horloge ──
 function Clock() {
   const [time, setTime] = useState(new Date())
   useEffect(() => {
@@ -119,7 +115,6 @@ export default function Desktop() {
   const openApp = (appId) => {
     const existing = windows.find(w => w.id === appId)
     if (existing) {
-      // Déjà ouvert : restaure si minimisé, sinon focus
       if (existing.minimized) {
         restoreWindow(appId)
       } else {
@@ -158,15 +153,12 @@ export default function Desktop() {
     setWindows(prev => prev.map(w => w.id === id ? { ...w, zIndex: nextZ } : w))
     setFocusedId(id)
   }
-
-  // Clic sur un onglet de la taskbar
   const handleTaskbarClick = (id) => {
     const win = windows.find(w => w.id === id)
     if (!win) return
     if (win.minimized) {
       restoreWindow(id)
     } else if (focusedId === id) {
-      // Déjà au premier plan → minimise
       minimizeWindow(id)
     } else {
       focusWindow(id)
@@ -181,10 +173,10 @@ export default function Desktop() {
       }}
       onClick={() => setSelectedIcon(null)}
     >
-      {/* ── Desktop area ── */}
+      
       <div className="flex-1 relative overflow-hidden">
 
-        {/* Desktop icons — colonne gauche */}
+        
         <div
           className="absolute top-4 left-4 flex flex-col gap-2"
           style={{ zIndex: 5 }}
@@ -201,7 +193,7 @@ export default function Desktop() {
           ))}
         </div>
 
-        {/* Windows */}
+        
         <AnimatePresence>
           {windows.map(win => {
             const AppComponent = win.component
@@ -227,7 +219,7 @@ export default function Desktop() {
         </AnimatePresence>
       </div>
 
-      {/* ── Taskbar style Win95/98 ── */}
+      
       <div
         className="shrink-0 flex items-center px-2 gap-2"
         style={{
@@ -237,7 +229,7 @@ export default function Desktop() {
           boxShadow: '0 -1px 0 #888',
         }}
       >
-        {/* Start button */}
+        
         <button
           className="raised flex items-center gap-1.5"
           style={{
@@ -257,10 +249,10 @@ export default function Desktop() {
           Start
         </button>
 
-        {/* Separator */}
+        
         <div style={{ width: 1, height: 22, background: '#888', borderRight: '1px solid #fff', marginRight: 2 }} />
 
-        {/* Open app tabs */}
+        
         <div className="flex gap-1 flex-1">
           {windows.map(win => (
             <button
@@ -295,7 +287,7 @@ export default function Desktop() {
           ))}
         </div>
 
-        {/* System tray */}
+        
         <div
           className="sunken flex items-center gap-2 px-2"
           style={{

@@ -74,7 +74,7 @@ export default function BootScreen({ onDone }) {
             ) : null
           )}
 
-          {/* Blinking cursor at end */}
+          
           {visibleLines.length >= BOOT_LINES.length && (
             <div className="mt-1 flex items-center gap-1">
               <span style={{ color: '#4dd868', fontSize: '13px', fontFamily: 'var(--font-mono)' }}>

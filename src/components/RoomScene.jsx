@@ -1,11 +1,8 @@
-/* ─────────────────────────────────────────────
-   ROOM SCENE — chambre rétro en CSS
-   Vue de face, écran CRT au centre sur un bureau
-───────────────────────────────────────────── */
+
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 
-/* Hauteur du sol en % du bas */
+
 const SOL = 8
 
 export default function RoomScene({ children, zoomedIn, onZoomDone }) {
@@ -25,7 +22,7 @@ export default function RoomScene({ children, zoomedIn, onZoomDone }) {
         : { duration: 0 }
       }
     >
-      {/* ── Flash blanc CRT — overlay de transition ── */}
+      
       <motion.div
         style={{
           position: 'absolute',
@@ -42,7 +39,7 @@ export default function RoomScene({ children, zoomedIn, onZoomDone }) {
         }
         onAnimationComplete={() => { if (zoomedIn) onZoomDone?.() }}
       />
-      {/* ══ MUR DU FOND ══ */}
+      
       <div style={{
         position: 'absolute',
         inset: 0,
@@ -57,7 +54,7 @@ export default function RoomScene({ children, zoomedIn, onZoomDone }) {
         `,
       }} />
 
-      {/* ══ LUMIÈRE LAMPE — cône chaud large ══ */}
+      
       <div style={{
         position: 'absolute',
         right: '2%',
@@ -75,7 +72,7 @@ export default function RoomScene({ children, zoomedIn, onZoomDone }) {
         zIndex: 3,
       }} />
 
-      {/* ══ SOL ══ */}
+      
       <div style={{
         position: 'absolute',
         left: 0, right: 0, bottom: 0,
@@ -90,7 +87,7 @@ export default function RoomScene({ children, zoomedIn, onZoomDone }) {
         `,
       }} />
 
-      {/* Plinthe */}
+      
       <div style={{
         position: 'absolute',
         left: 0, right: 0,
@@ -100,13 +97,13 @@ export default function RoomScene({ children, zoomedIn, onZoomDone }) {
         boxShadow: '0 2px 8px rgba(0,0,0,0.4)',
       }} />
 
-      {/* ══ BUREAU ══ */}
+      
       <DeskFurniture />
 
-      {/* ══ DÉCO CHAMBRE ══ */}
+      
       <RoomDecor />
 
-      {/* ══ LUEUR ÉCRAN CRT sur le mur ══ */}
+      
       <div style={{
         position: 'absolute',
         left: '50%',
@@ -119,7 +116,7 @@ export default function RoomScene({ children, zoomedIn, onZoomDone }) {
         zIndex: 4,
       }} />
 
-      {/* ══ VIGNETTE légère ══ */}
+      
       <div style={{
         position: 'absolute',
         inset: 0,
@@ -128,7 +125,7 @@ export default function RoomScene({ children, zoomedIn, onZoomDone }) {
         zIndex: 6,
       }} />
 
-      {/* ══ L'ÉCRAN CRT ══ */}
+      
       <div
         style={{
           position: 'absolute',
@@ -146,13 +143,11 @@ export default function RoomScene({ children, zoomedIn, onZoomDone }) {
   )
 }
 
-/* ════════════════════════════════════════════
-   BUREAU
-════════════════════════════════════════════ */
+
 function DeskFurniture() {
   return (
     <>
-      {/* Surface du bureau */}
+      
       <div style={{
         position: 'absolute',
         left: '2%', right: '2%',
@@ -163,7 +158,7 @@ function DeskFurniture() {
         zIndex: 8,
       }} />
 
-      {/* Rebord avant */}
+      
       <div style={{
         position: 'absolute',
         left: '2%', right: '2%',
@@ -174,7 +169,7 @@ function DeskFurniture() {
         zIndex: 8,
       }} />
 
-      {/* Pied gauche */}
+      
       <div style={{
         position: 'absolute',
         left: '4%',
@@ -185,7 +180,7 @@ function DeskFurniture() {
         borderRadius: '0 0 4px 4px',
         zIndex: 7,
       }} />
-      {/* Pied droit */}
+      
       <div style={{
         position: 'absolute',
         right: '4%',
@@ -203,7 +198,7 @@ function DeskFurniture() {
   )
 }
 
-/* ─── Câble ─── */
+
 function Cable({ x, delay = '0s' }) {
   return (
     <svg
@@ -225,7 +220,7 @@ function Cable({ x, delay = '0s' }) {
   )
 }
 
-/* ─── Tasse 2 (remplace la Gameboy sur le bureau) ─── */
+
 function Mug2() {
   return (
     <div style={{
@@ -234,7 +229,7 @@ function Mug2() {
       bottom: `calc(${SOL}% + 50px)`,
       zIndex: 12,
     }}>
-      {/* Vapeur pixel-art animée */}
+      
       {[0, 1, 2].map(col => (
         <div key={col} style={{
           position: 'absolute',
@@ -263,7 +258,7 @@ function Mug2() {
           ))}
         </div>
       ))}
-      {/* Corps */}
+      
       <div style={{
         width: 44,
         height: 50,
@@ -272,7 +267,7 @@ function Mug2() {
         position: 'relative',
         boxShadow: '0 4px 14px rgba(0,0,0,0.55), inset 2px 0 0 rgba(255,255,255,0.05)',
       }}>
-        {/* Anse */}
+        
         <div style={{
           position: 'absolute',
           left: -16, top: 10,
@@ -281,7 +276,7 @@ function Mug2() {
           borderRadius: '10px 0 0 10px',
           borderRight: 'none',
         }} />
-        {/* Rim */}
+        
         <div style={{
           position: 'absolute',
           top: 0, left: 0, right: 0,
@@ -289,7 +284,7 @@ function Mug2() {
           background: 'rgba(255,255,255,0.07)',
           borderRadius: '4px 4px 0 0',
         }} />
-        {/* Café */}
+        
         <div style={{
           position: 'absolute',
           top: 6, left: 3, right: 3,
@@ -298,7 +293,7 @@ function Mug2() {
           borderRadius: 2,
           opacity: 0.8,
         }} />
-        {/* Petit logo */}
+        
         <div style={{
           position: 'absolute',
           top: '50%', left: '50%',
@@ -313,7 +308,7 @@ function Mug2() {
   )
 }
 
-/* ─── Grille pixel-art réutilisable ─── */
+
 function PixelGrid({ grid, px }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 0, imageRendering: 'pixelated' }}>
@@ -328,7 +323,7 @@ function PixelGrid({ grid, px }) {
   )
 }
 
-/* ─── Figurine Minecraft Creeper ─── */
+
 function MinecraftFigure() {
   const G  = '#3a9a2a'
   const GD = '#2a7018'
@@ -383,7 +378,7 @@ function MinecraftFigure() {
   )
 }
 
-/* ─── Lampe sur pied (floor lamp) ─── */
+
 function FloorLamp() {
   const LAMP_HEIGHT = 320
 
@@ -399,7 +394,7 @@ function FloorLamp() {
       transform: 'scale(0.78)',
       transformOrigin: 'bottom center',
     }}>
-      {/* Halo de lumière au sol */}
+      
       <div style={{
         position: 'absolute',
         bottom: 0, left: '50%',
@@ -408,7 +403,7 @@ function FloorLamp() {
         background: 'radial-gradient(ellipse, rgba(255,215,100,0.28) 0%, transparent 72%)',
       }} />
 
-      {/* Base lourde */}
+      
       <div style={{
         position: 'absolute',
         bottom: 0, left: '50%',
@@ -419,7 +414,7 @@ function FloorLamp() {
         boxShadow: '0 4px 12px rgba(0,0,0,0.6)',
       }} />
 
-      {/* Tige principale — du sol jusqu'à l'abat-jour */}
+      
       <div style={{
         position: 'absolute',
         bottom: 12, left: '50%',
@@ -431,7 +426,7 @@ function FloorLamp() {
         boxShadow: '2px 0 4px rgba(0,0,0,0.35)',
       }} />
 
-      {/* Abat-jour trapézoïdal posé directement en haut de la tige */}
+      
       <div style={{
         position: 'absolute',
         top: 0, left: '50%',
@@ -448,7 +443,7 @@ function FloorLamp() {
         }} />
       </div>
 
-      {/* Bouton on/off */}
+      
       <div style={{
         position: 'absolute',
         bottom: LAMP_HEIGHT * 0.38,
@@ -462,7 +457,7 @@ function FloorLamp() {
   )
 }
 
-/* ─── Gameboy ─── */
+
 function Gameboy() {
   return (
     <div style={{
@@ -481,7 +476,7 @@ function Gameboy() {
         position: 'relative',
         boxShadow: '0 6px 20px rgba(0,0,0,0.65), inset 0 2px 0 rgba(255,255,255,0.12)',
       }}>
-        {/* Bezel écran */}
+        
         <div style={{
           position: 'absolute',
           top: 10, left: 7, right: 7,
@@ -491,7 +486,7 @@ function Gameboy() {
           border: '2px solid #1a1a2a',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
         }}>
-          {/* Écran */}
+          
           <div style={{
             width: '80%', height: '76%',
             background: 'linear-gradient(135deg, #3a5a3a 0%, #1e3a1e 100%)',
@@ -499,7 +494,7 @@ function Gameboy() {
             boxShadow: 'inset 0 1px 4px rgba(0,0,0,0.5)',
           }} />
         </div>
-        {/* Label "GAME BOY" */}
+        
         <div style={{
           position: 'absolute',
           top: 52, left: 0, right: 0,
@@ -509,7 +504,7 @@ function Gameboy() {
           color: 'rgba(200,190,220,0.5)',
           letterSpacing: 2,
         }}>GAME BOY</div>
-        {/* Croix directionnelle */}
+        
         <div style={{
           position: 'absolute',
           bottom: 22, left: 8,
@@ -518,7 +513,7 @@ function Gameboy() {
           <div style={{ position: 'absolute', top: '33%', left: 0, width: '100%', height: '34%', background: '#2a2a3a', borderRadius: 2 }} />
           <div style={{ position: 'absolute', left: '33%', top: 0, width: '34%', height: '100%', background: '#2a2a3a', borderRadius: 2 }} />
         </div>
-        {/* Boutons A/B */}
+        
         <div style={{
           position: 'absolute',
           bottom: 24, right: 6,
@@ -528,7 +523,7 @@ function Gameboy() {
           <div style={{ width: 11, height: 11, borderRadius: '50%', background: '#c0303a', boxShadow: '0 2px 4px rgba(0,0,0,0.5)' }} />
           <div style={{ width: 11, height: 11, borderRadius: '50%', background: '#2a3ab0', boxShadow: '0 2px 4px rgba(0,0,0,0.5)' }} />
         </div>
-        {/* Start/Select */}
+        
         <div style={{
           position: 'absolute',
           bottom: 10, left: '50%',
@@ -542,7 +537,7 @@ function Gameboy() {
             </div>
           ))}
         </div>
-        {/* Speaker grille */}
+        
         <div style={{
           position: 'absolute',
           bottom: 8, right: 6,
@@ -557,9 +552,7 @@ function Gameboy() {
   )
 }
 
-/* ════════════════════════════════════════════
-   DÉCO CHAMBRE
-════════════════════════════════════════════ */
+
 function RoomDecor() {
   return (
     <>
@@ -572,7 +565,7 @@ function RoomDecor() {
   )
 }
 
-/* ─── Étagère ─── */
+
 function Shelf({ side }) {
   const isLeft = side === 'left'
 
@@ -584,8 +577,6 @@ function Shelf({ side }) {
     { type: 'book',   w: 22, h: 76, color: '#1a4a2a' },
     { type: 'book',   w: 16, h: 64, color: '#4a3a1a' },
   ]
-
-  // Creeper pixel data pour l'étagère droite
   const G  = '#3a9a2a'
   const GD = '#2a7018'
   const B  = '#111'
@@ -614,7 +605,7 @@ function Shelf({ side }) {
     [G,GD,W,G,GD,W],
     [GD,G,W,GD,G,W],
   ]
-  const PX = 5 // plus petit pour tenir sur l'étagère
+  const PX = 5
 
   return (
     <div style={{
@@ -623,7 +614,7 @@ function Shelf({ side }) {
       bottom: `calc(${SOL}% + 200px)`,
       zIndex: 5,
     }}>
-      {/* Planche */}
+      
       <div style={{
         width: 240,
         height: 16,
@@ -631,7 +622,7 @@ function Shelf({ side }) {
         boxShadow: '0 6px 16px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,220,140,0.25)',
         borderRadius: '2px 2px 0 0',
       }} />
-      {/* Fixation murale */}
+      
       <div style={{
         position: 'absolute',
         top: 16,
@@ -642,7 +633,7 @@ function Shelf({ side }) {
       }} />
 
       {isLeft ? (
-        /* Étagère gauche — livres + figurine générique */
+        
         <div style={{
           display: 'flex',
           alignItems: 'flex-end',
@@ -678,7 +669,7 @@ function Shelf({ side }) {
           ))}
         </div>
       ) : (
-        /* Étagère droite — Gameboy + Creeper pixel-art */
+        
         <div style={{
           position: 'absolute',
           bottom: 16,
@@ -690,7 +681,7 @@ function Shelf({ side }) {
           height: 90,
           paddingBottom: 2,
         }}>
-          {/* Gameboy miniature */}
+          
           <div style={{
             transform: 'scale(0.72)',
             transformOrigin: 'bottom center',
@@ -753,7 +744,7 @@ function Shelf({ side }) {
             </div>
           </div>
 
-          {/* Creeper pixel-art */}
+          
           <div style={{
             display: 'flex',
             flexDirection: 'column',
@@ -771,7 +762,7 @@ function Shelf({ side }) {
   )
 }
 
-/* ─── Poster ─── */
+
 function Poster({ x, y, w, h, hue, label, variant = 'code' }) {
   return (
     <div style={{
@@ -788,7 +779,7 @@ function Poster({ x, y, w, h, hue, label, variant = 'code' }) {
       justifyContent: 'center',
       overflow: 'hidden',
     }}>
-      {/* Accent top */}
+      
       <div style={{
         position: 'absolute', top: 0, left: 0, right: 0, height: 4,
         background: `linear-gradient(90deg, transparent, hsla(${hue},70%,50%,0.55), transparent)`,
@@ -838,7 +829,7 @@ function Poster({ x, y, w, h, hue, label, variant = 'code' }) {
         </div>
       )}
 
-      {/* Label */}
+      
       <div style={{
         position: 'absolute',
         bottom: 10,
@@ -855,7 +846,7 @@ function Poster({ x, y, w, h, hue, label, variant = 'code' }) {
   )
 }
 
-/* ─── Fenêtre murale ─── */
+
 function WindowFrame() {
   return (
     <div style={{
@@ -865,7 +856,7 @@ function WindowFrame() {
       width: 180, height: 230,
       zIndex: 4,
     }}>
-      {/* Cadre bois */}
+      
       <div style={{
         position: 'absolute', inset: 0,
         border: '10px solid #2a1e10',
@@ -873,33 +864,33 @@ function WindowFrame() {
         zIndex: 2,
         boxShadow: 'inset 0 0 0 2px rgba(255,200,100,0.08)',
       }} />
-      {/* Rebord intérieur */}
+      
       <div style={{
         position: 'absolute', inset: 10,
         border: '3px solid #1a1208',
         zIndex: 2,
         pointerEvents: 'none',
       }} />
-      {/* Croisillon H */}
+      
       <div style={{
         position: 'absolute',
         left: 10, right: 10, top: '48%',
         height: 8, background: '#2a1e10', zIndex: 3,
       }} />
-      {/* Croisillon V */}
+      
       <div style={{
         position: 'absolute',
         top: 10, bottom: 10, left: '50%',
         width: 8, background: '#2a1e10', zIndex: 3,
         marginLeft: -4,
       }} />
-      {/* Ciel */}
+      
       <div style={{
         position: 'absolute', inset: 10,
         background: 'linear-gradient(180deg, #060818 0%, #090d22 55%, #0c1130 100%)',
         zIndex: 1,
       }} />
-      {/* Lune pleine */}
+      
       <div style={{
         position: 'absolute',
         left: '55%', top: '12%',
@@ -909,7 +900,7 @@ function WindowFrame() {
         boxShadow: '0 0 14px rgba(240,225,170,0.65), 0 0 32px rgba(240,225,170,0.25)',
         zIndex: 4,
       }} />
-      {/* Ombre croissant */}
+      
       <div style={{
         position: 'absolute',
         left: 'calc(55% + 10px)', top: 'calc(12% + 2px)',
@@ -919,7 +910,7 @@ function WindowFrame() {
         zIndex: 5,
         opacity: 0.62,
       }} />
-      {/* Étoiles */}
+      
       {[
         [18,16],[62,28],[38,54],[70,46],[12,68],[80,18],
         [44,10],[8,42],[55,72],[28,80],[90,60],[35,36],
@@ -937,7 +928,7 @@ function WindowFrame() {
           animationDelay: `${(i * 0.43) % 2.5}s`,
         }} />
       ))}
-      {/* Lueur lunaire diffuse */}
+      
       <div style={{
         position: 'absolute',
         top: 0, left: 0,

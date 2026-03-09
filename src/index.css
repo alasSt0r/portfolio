@@ -4,26 +4,26 @@
 @import "@fontsource/inter/600.css";
 
 @theme {
-  /* Phosphor green — pour les accents CRT */
+  
   --color-p:         #39ff6e;
   --color-p-dim:     #22c55e;
   --color-p-dark:    #052e16;
   --color-p-glow:    rgba(57, 255, 110, 0.45);
 
-  /* Desktop — bleu-teal sombre mais lisible, façon Amiga/Win3.1 */
+  
   --color-desk:      #1a3a4a;
   --color-desk-2:    #142e3c;
 
-  /* Fenêtres */
-  --color-win-bg:    #e8e8e4;   /* gris clair cassé, papier */
-  --color-win-title: #2a5298;   /* bleu Windows 95 */
+  
+  --color-win-bg:    #e8e8e4;   
+  --color-win-title: #2a5298;   
   --color-win-title-end: #1a3a7a;
   --color-win-border: #888880;
 
-  /* Taskbar */
-  --color-bar:       #c0c0c0;   /* gris argent Windows */
+  
+  --color-bar:       #c0c0c0;   
 
-  /* Texte dans fenêtres */
+  
   --color-text:      #1a1a1a;
   --color-text-dim:  #555550;
 
@@ -55,7 +55,7 @@ body {
   box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #666;
 }
 
-/* ── CRT scanlines ── */
+
 .crt-scanlines::after {
   content: '';
   position: absolute; inset: 0;
@@ -69,7 +69,7 @@ body {
   animation: scanroll 6s linear infinite;
 }
 
-/* ── CRT vignette — allégée ── */
+
 .crt-vignette::before {
   content: '';
   position: absolute; inset: 0;
@@ -82,17 +82,17 @@ body {
   z-index: 51;
 }
 
-/* ── Flicker très subtil ── */
+
 .crt-flicker { animation: flicker 12s infinite; }
 
-/* ── Phosphor glow text (accents seulement) ── */
+
 .glow    { text-shadow: 0 0 8px var(--color-p-glow), 0 0 20px rgba(57,255,110,0.2); }
 .glow-sm { text-shadow: 0 0 5px var(--color-p-glow); }
 
-/* ── Blink ── */
+
 .blink { animation: blink 1s step-end infinite; }
 
-/* ── Win95-style raised/sunken borders ── */
+
 .raised {
   border-top: 2px solid #fff;
   border-left: 2px solid #fff;
@@ -106,7 +106,7 @@ body {
   border-bottom: 2px solid #fff;
 }
 
-/* ── Keyframes ── */
+
 @keyframes scanroll {
   from { background-position: 0 0; }
   to   { background-position: 0 200px; }

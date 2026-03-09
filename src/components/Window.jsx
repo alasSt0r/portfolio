@@ -17,8 +17,6 @@ export default function Window({
 }) {
   const [pos, setPos]   = useState(defaultPosition)
   const [size, setSize] = useState(defaultSize)
-
-  // ── Drag ──
   const onDragStart = useCallback((e) => {
     if (e.target.closest('[data-nodrag]')) return
     e.preventDefault()
@@ -30,8 +28,6 @@ export default function Window({
     window.addEventListener('mousemove', move)
     window.addEventListener('mouseup', up)
   }, [pos, id, onFocus])
-
-  // ── Resize ──
   const onResizeStart = useCallback((e) => {
     e.stopPropagation(); e.preventDefault()
     const sx = e.clientX, sy = e.clientY
@@ -59,12 +55,12 @@ export default function Window({
         width:  size.width,
         height: size.height,
         zIndex: isMinimized ? -1 : zIndex,
-        /* Fenêtre avec look OS rétro — fond gris clair */
+        
         background: isFocused
           ? 'linear-gradient(180deg, #f0f0ec 0%, #e4e4e0 100%)'
           : '#dcdcd8',
         border: '2px solid',
-        borderColor: '#888 #fff #fff #888',   /* relief Win95 */
+        borderColor: '#888 #fff #fff #888',   
         boxShadow: isFocused
           ? '2px 2px 0 #555, 4px 6px 20px rgba(0,0,0,0.45)'
           : '1px 1px 0 #555, 2px 3px 10px rgba(0,0,0,0.3)',
@@ -72,7 +68,7 @@ export default function Window({
       }}
       onMouseDown={() => onFocus(id)}
     >
-      {/* ── Title bar ── */}
+      
       <div
         onMouseDown={onDragStart}
         className="flex items-center gap-1.5 shrink-0 cursor-move select-none px-2"
@@ -84,12 +80,12 @@ export default function Window({
           borderBottom: '1px solid rgba(0,0,0,0.25)',
         }}
       >
-        {/* Icon */}
+        
         {icon && (
           <span style={{ fontSize: 14, lineHeight: 1, flexShrink: 0 }}>{icon}</span>
         )}
 
-        {/* Title */}
+        
         <span
           className="flex-1 truncate"
           style={{
@@ -104,7 +100,7 @@ export default function Window({
           {title}
         </span>
 
-        {/* Controls */}
+        
         <div className="flex gap-1" data-nodrag="true">
           <TitleBtn onClick={() => onMinimize(id)} title="Minimize">
             <span style={{ display: 'block', width: 8, height: 2, background: '#333', marginTop: 'auto', marginBottom: 1 }} />
@@ -118,7 +114,7 @@ export default function Window({
         </div>
       </div>
 
-      {/* ── Body ── */}
+      
       <div
         className="flex-1 overflow-auto"
         style={{ background: '#fafaf8', padding: '16px 18px' }}
@@ -126,7 +122,7 @@ export default function Window({
         {children}
       </div>
 
-      {/* ── Status bar ── */}
+      
       <div
         style={{
           height: 18,
@@ -143,7 +139,7 @@ export default function Window({
         </span>
       </div>
 
-      {/* ── Resize ── */}
+      
       <div
         onMouseDown={onResizeStart}
         data-nodrag="true"

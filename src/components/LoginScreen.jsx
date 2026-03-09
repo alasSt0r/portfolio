@@ -14,7 +14,7 @@ export default function LoginScreen({ onLogin }) {
       gap: 0,
     }}>
 
-      {/* Grille de fond subtile */}
+      
       <div style={{
         position: 'absolute', inset: 0,
         backgroundImage: `
@@ -25,7 +25,7 @@ export default function LoginScreen({ onLogin }) {
         pointerEvents: 'none',
       }} />
 
-      {/* Heure fictive */}
+      
       <div style={{
         position: 'absolute',
         top: 18, right: 22,
@@ -36,7 +36,7 @@ export default function LoginScreen({ onLogin }) {
         03:47:22
       </div>
 
-      {/* Logo / nom */}
+      
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -71,7 +71,7 @@ export default function LoginScreen({ onLogin }) {
         </div>
       </motion.div>
 
-      {/* Avatar pixel */}
+      
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -82,7 +82,7 @@ export default function LoginScreen({ onLogin }) {
           position: 'relative',
         }}
       >
-        {/* silhouette stylisée en CSS */}
+        
         <div style={{
           width: 64, height: 64,
           borderRadius: '50%',
@@ -100,7 +100,7 @@ export default function LoginScreen({ onLogin }) {
         </div>
       </motion.div>
 
-      {/* Bouton login */}
+      
       <motion.button
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -134,7 +134,7 @@ export default function LoginScreen({ onLogin }) {
         [ ENTER ]
       </motion.button>
 
-      {/* Hint clavier */}
+      
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -149,7 +149,7 @@ export default function LoginScreen({ onLogin }) {
         PRESS TO CONTINUE
       </motion.div>
 
-      {/* Scanline overlay */}
+      
       <div style={{
         position: 'absolute', inset: 0,
         background: 'repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.06) 3px, rgba(0,0,0,0.06) 4px)',

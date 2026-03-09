@@ -1,6 +1,4 @@
-/* =============================================
-   CRT SCREEN WRAPPER
-   ============================================= */
+
 
 .crt-wrapper {
   width: 100vw;
@@ -13,7 +11,7 @@
   justify-content: center;
 }
 
-/* Outer bezel */
+
 .crt-bezel {
   position: relative;
   width: min(100vw, calc(100vh * 1.42));
@@ -28,7 +26,7 @@
   padding: 14px;
 }
 
-/* Screen tube */
+
 .crt-screen {
   width: 100%;
   height: 100%;
@@ -37,13 +35,13 @@
   position: relative;
   overflow: hidden;
 
-  /* Phosphor base glow */
+  
   box-shadow:
     0 0 30px rgba(0, 255, 65, 0.08) inset,
     0 0 2px rgba(0, 255, 65, 0.15) inset;
 }
 
-/* Curved glass vignette */
+
 .crt-screen::before {
   content: '';
   position: absolute;
@@ -57,7 +55,7 @@
   z-index: 100;
 }
 
-/* Scanlines */
+
 .crt-screen::after {
   content: '';
   position: absolute;
@@ -80,7 +78,7 @@
   100% { background-position: 0 400px; }
 }
 
-/* Phosphor flicker animation */
+
 .crt-screen {
   animation: flicker 0.15s infinite;
 }
@@ -94,7 +92,7 @@
   100% { opacity: 1; }
 }
 
-/* Reflection glare */
+
 .crt-glare {
   position: absolute;
   top: 6%;
@@ -113,9 +111,7 @@
   transform: rotate(-10deg);
 }
 
-/* =============================================
-   DESKTOP
-   ============================================= */
+
 
 .desktop {
   width: 100%;
@@ -127,7 +123,7 @@
   overflow: hidden;
 }
 
-/* Subtle texture/noise on desktop */
+
 .desktop::before {
   content: '';
   position: absolute;
@@ -146,9 +142,7 @@
   overflow: hidden;
 }
 
-/* =============================================
-   TASKBAR
-   ============================================= */
+
 
 .taskbar {
   height: var(--taskbar-h);
@@ -188,9 +182,7 @@
   letter-spacing: 1px;
 }
 
-/* =============================================
-   DESKTOP ICONS
-   ============================================= */
+
 
 .desktop-icons {
   padding: 20px;
@@ -256,9 +248,7 @@
   text-transform: uppercase;
 }
 
-/* =============================================
-   WINDOW
-   ============================================= */
+
 
 .window {
   position: absolute;
@@ -287,7 +277,7 @@
   z-index: 50;
 }
 
-/* Title bar */
+
 .window-titlebar {
   height: 26px;
   background: var(--win-title-bg);
@@ -355,7 +345,7 @@
   color: #fff;
 }
 
-/* Window body */
+
 .window-body {
   flex: 1;
   overflow: auto;
@@ -363,7 +353,7 @@
   position: relative;
 }
 
-/* Window resize handle */
+
 .window-resize {
   position: absolute;
   bottom: 0;
@@ -383,9 +373,7 @@
   opacity: 0.5;
 }
 
-/* =============================================
-   BOOT SCREEN
-   ============================================= */
+
 
 .boot-screen {
   position: absolute;
@@ -436,9 +424,7 @@
   50%       { opacity: 0; }
 }
 
-/* =============================================
-   CONTACT APP
-   ============================================= */
+
 
 .contact-app {
   font-family: 'Share Tech Mono', monospace;
@@ -498,9 +484,7 @@
   gap: 6px;
 }
 
-/* =============================================
-   ABOUT APP (placeholder)
-   ============================================= */
+
 
 .about-app {
   font-family: 'Share Tech Mono', monospace;
@@ -534,9 +518,7 @@
   line-height: 2;
 }
 
-/* =============================================
-   PHOSPHOR TEXT EFFECTS
-   ============================================= */
+
 
 .phosphor-text {
   color: var(--phosphor);
@@ -547,7 +529,7 @@
   color: var(--phosphor-dim);
 }
 
-/* Blinking cursor utility */
+
 .cursor::after {
   content: '█';
   animation: blink 1s step-end infinite;

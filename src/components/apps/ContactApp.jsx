@@ -10,7 +10,7 @@ export default function ContactApp() {
   return (
     <div style={{ fontFamily: 'var(--font-ui)', color: 'var(--color-text)' }}>
 
-      {/* App header */}
+      
       <div className="flex items-center gap-3 mb-5">
         <div
           style={{
@@ -35,10 +35,10 @@ export default function ContactApp() {
         </div>
       </div>
 
-      {/* Divider */}
+      
       <div style={{ height: 1, background: '#e0e0dc', marginBottom: 14 }} />
 
-      {/* Rows */}
+      
       <div className="flex flex-col gap-3">
         {rows.map(({ label, value, href }) => (
           <div key={label} className="flex items-center gap-3">

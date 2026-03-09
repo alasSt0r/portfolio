@@ -1,4 +1,4 @@
-/* CRTScreen — toujours allumé, remplit son conteneur */
+
 export default function CRTScreen({ children }) {
   return (
     <div style={{
@@ -9,7 +9,7 @@ export default function CRTScreen({ children }) {
       justifyContent: 'center',
       background: 'transparent',
     }}>
-      {/* ── Plastic bezel ── */}
+      
       <div style={{
         position: 'relative',
         width: '100%',
@@ -26,7 +26,7 @@ export default function CRTScreen({ children }) {
         `,
         borderRadius: 4,
       }}>
-        {/* Socle bas */}
+        
         <div style={{
           position: 'absolute',
           bottom: -14, left: '30%', right: '30%',
@@ -36,7 +36,7 @@ export default function CRTScreen({ children }) {
           boxShadow: '0 4px 12px rgba(0,0,0,0.6)',
           zIndex: 2,
         }} />
-        {/* Pied */}
+        
         <div style={{
           position: 'absolute',
           bottom: -26, left: '40%', right: '40%',
@@ -47,7 +47,7 @@ export default function CRTScreen({ children }) {
           zIndex: 2,
         }} />
 
-        {/* ── Bezel inner lip ── */}
+        
         <div style={{
           position: 'relative',
           width: '100%',
@@ -56,7 +56,7 @@ export default function CRTScreen({ children }) {
           padding: '4px',
           boxShadow: 'inset 0 0 8px rgba(0,0,0,0.9)',
         }}>
-          {/* ── CRT tube ── */}
+          
           <div
             className="crt-scanlines crt-vignette crt-flicker"
             style={{
@@ -69,14 +69,14 @@ export default function CRTScreen({ children }) {
               boxShadow: 'inset 0 0 50px rgba(0,0,0,0.2)',
             }}
           >
-            {/* Phosphor ambient */}
+            
             <div style={{
               position: 'absolute', inset: 0,
               background: 'radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.012) 0%, transparent 65%)',
               pointerEvents: 'none',
               zIndex: 0,
             }} />
-            {/* Glass glare */}
+            
             <div style={{
               position: 'absolute',
               top: '3%', left: '4%',
@@ -87,14 +87,14 @@ export default function CRTScreen({ children }) {
               pointerEvents: 'none',
               zIndex: 52,
             }} />
-            {/* Content */}
+            
             <div style={{ position: 'relative', width: '100%', height: '100%', zIndex: 10 }}>
               {children}
             </div>
           </div>
         </div>
 
-        {/* Bezel label */}
+        
         <div style={{
           position: 'absolute',
           bottom: 4, left: '50%',
@@ -110,7 +110,7 @@ export default function CRTScreen({ children }) {
           MW·DISPLAY·PRO
         </div>
 
-        {/* LED verte — décorative */}
+        
         <div style={{
           position: 'absolute',
           bottom: 7, right: 12,

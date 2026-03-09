@@ -2,7 +2,7 @@ const PROJECTS = [
   {
     id: 1,
     name: 'Portfolio CRT',
-    desc: 'Ce portfolio — scène rétro CSS, écran CRT, bureau Windows 95.',
+    desc: 'This portfolio features a retro CSS scene with a CRT screen and a Windows 95 desktop.',
     tags: ['React', 'Framer Motion', 'Tailwind'],
     status: 'WIP',
     statusColor: '#c08020',
@@ -10,8 +10,8 @@ const PROJECTS = [
   },
   {
     id: 2,
-    name: 'Projet 2',
-    desc: 'Description courte du projet à venir.',
+    name: 'Project 2',
+    desc: 'Short description of an upcoming project.',
     tags: ['TypeScript', 'Node.js'],
     status: 'Soon',
     statusColor: '#555',
@@ -19,8 +19,8 @@ const PROJECTS = [
   },
   {
     id: 3,
-    name: 'Projet 3',
-    desc: 'Description courte du projet à venir.',
+    name: 'Project 3',
+    desc: 'Short description of an upcoming project.',
     tags: ['Python', 'FastAPI'],
     status: 'Soon',
     statusColor: '#555',
@@ -32,7 +32,7 @@ export default function ProjectsApp() {
   return (
     <div style={{ fontFamily: 'var(--font-ui)', color: 'var(--color-text)', overflowY: 'auto', height: '100%' }}>
 
-      {/* Header */}
+      
       <div className="flex items-center gap-3 mb-4">
         <div style={{
           width: 44, height: 44,
@@ -57,7 +57,7 @@ export default function ProjectsApp() {
 
       <div style={{ height: 1, background: '#e0e0dc', marginBottom: 14 }} />
 
-      {/* Project list */}
+      
       <div className="flex flex-col gap-3">
         {PROJECTS.map(p => (
           <div key={p.id} style={{
@@ -67,7 +67,7 @@ export default function ProjectsApp() {
             borderRadius: 4,
             boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
           }}>
-            {/* Row 1: name + status */}
+            
             <div className="flex items-center justify-between gap-2 mb-1">
               <span style={{ fontSize: 13, fontWeight: 600, color: '#1a1a1a' }}>
                 {p.name}
@@ -88,12 +88,12 @@ export default function ProjectsApp() {
               </span>
             </div>
 
-            {/* Description */}
+            
             <p style={{ fontSize: 12, color: '#555', lineHeight: 1.5, marginBottom: 8 }}>
               {p.desc}
             </p>
 
-            {/* Tags + link */}
+            
             <div className="flex items-center justify-between gap-2">
               <div className="flex flex-wrap gap-1">
                 {p.tags.map(t => (

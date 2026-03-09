@@ -6,13 +6,10 @@ import Desktop from './components/Desktop'
 import RoomScene from './components/RoomScene'
 
 export default function App() {
-  // 'boot' | 'login' | 'zooming' | 'desktop'
   const [phase, setPhase] = useState('boot')
 
   const handleBootDone      = useCallback(() => setPhase('login'), [])
-  // clic login → on lance le flash CRT, mais on garde LoginScreen affiché
   const handleLogin         = useCallback(() => setPhase('zooming'), [])
-  // flash terminé → on switche vers le desktop plein écran
   const handleZoomDone      = useCallback(() => setPhase('desktop'), [])
 
   const zoomedIn = phase === 'zooming'
