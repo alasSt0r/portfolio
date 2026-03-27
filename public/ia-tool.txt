@@ -1,0 +1,30 @@
+A.I AS A TOOL
+═════════════════════════════════════════════════════════════
+
+📌 Introduction
+────────────────────────────────────────────────────────────
+
+Aujourd'hui, de nombreux moyens permettent d'intégrer l'intelligence artificielle à nos espaces de travail et nos logiciels, je traiterai ici les évolutions de ces possibilitées d'intégration.
+
+
+💡 Observations et Réflexions
+────────────────────────────────────────────────────────────
+
+La limite entre modèle premium et open-source devient plus fine, de jour en jour les modèles open source se rapprochent en performance de leurs homologues payant que ca soit sur les basiques tests de connaissances que sur les tâches. On va vite se retrouver avec le même fonctionnement économique qu’au début d’Apple, ils ne se défendaient pas en se protégeant pour être les seuls producteurs de smartphone haut de gamme, ils repoussent la limite toujours plus loin en sortant une gamme technologique un pas plus loin à chaque fois.
+
+Après un incident récent médiatisé, à savoir une développeuse ayant laissé son claude tourner en auto-mode tout en supervisant depuis son téléphone étant dans l’incapacité d'empêcher son agent de supprimer une database entière, Anthropic réagit et annonce que leur système est moins enclin à la suppression de masse tout en rappelant que le mode automatique n’est pas conseillé pour les changements lourds. Pour rappel, Claude permet de valider chaque commande étape par étape.
+
+Un repo github servant à structurer le système de pensée des agents IA, pour des résultats plus précis et adapter au type de dev qu’on fait : /frontend-dev pour faire du front, /fullstack-dev pour faire du full, et de nombreuse autre commande qui oriente la réponse de l’agent vers un résultat plus fiable, vous trouverez le lien du repo MiniMax-AI/skills dans les ressources.
+
+Il faut depuis peu faire encore plus attention à notre utilisation de l’IA, OpenAI propose maintenant un service automatique de stockage des images et fichiers dans leur cloud pour des références futures de leur agent. Ce que cela veut dire c’est qu’il est maintenant formellement interdit de stocker des données importantes dans OpenAi, bien qu’évidemment vous ne l’ayez jamais fait avant car c’était déjà déconseillé.
+
+
+
+🔗 Liens et Ressources
+────────────────────────────────────────────────────────────
+
+- https://github.com/MiniMax-AI/skills
+
+
+═════════════════════════════════════════════════════════════
+Dernière mise à jour : Mars 2026

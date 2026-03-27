@@ -1,0 +1,24 @@
+A.I AS A DEV
+═════════════════════════════════════════════════════════════
+
+📌 Introduction
+────────────────────────────────────────────────────────────
+
+Avec l'évolution récente de l'intelligence artificielle, on peut se poser la question suivante : notre métier est il remplaceable ? J'essaierai d'y répondre ici
+
+
+💡 Observations et Réflexions
+────────────────────────────────────────────────────────────
+
+Haut les coeurs, l’ère de l’intelligence artificielle qui remplace le développeur n’est pas pour demain la veille. Mario Zechner, un développeur freelance depuis 15 ans et également angel investor explique que depuis la récente évolution de l’IA, toutes les entreprises indiquant écrire une grande partie de leur code via cette solution ont beaucoup + de bugs et des résultats plus que méprisables. Il indique que bientôt on reviendra en arrière et on optera pour des résultats plus lents; mais plus fiable. Il faudrait changer notre utilisation de l’IA, et faire en sorte que l’humain soit toujours la dernière porte de qualitée. Le lien de l'article de Mario Zechner est disponible dans les ressources.
+
+
+🔗 Liens et Ressources
+────────────────────────────────────────────────────────────
+
+- https://mariozechner.at/posts/2026-03-25-thoughts-on-slowing-the-fuck-down/?utm_source=tldrdev
+
+
+
+═════════════════════════════════════════════════════════════
+Dernière mise à jour : Mars 2026
