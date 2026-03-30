@@ -5,6 +5,7 @@ import ContactApp from './apps/ContactApp'
 import AboutApp from './apps/AboutApp'
 import ProjectsApp from './apps/ProjectsApp'
 import TechWatchApp from './apps/TechWatchApp'
+import BtsSkillsApp from './apps/BtsSkillsApp'
 
 const APPS = [
   {
@@ -42,6 +43,15 @@ const APPS = [
     component: TechWatchApp,
     defaultSize: { width: 640, height: 420 },
     defaultPosition: { x: 140, y: 70 },
+  },
+  {
+    id: 'btsskills',
+    label: 'BTS Skills',
+    icon: '📊',
+    title: 'Tableau Compétences BTS',
+    component: BtsSkillsApp,
+    defaultSize: { width: 720, height: 480 },
+    defaultPosition: { x: 100, y: 60 },
   },
 ]
 function DesktopIcon({ app, onOpen, isSelected, onSelect }) {
