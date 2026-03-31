@@ -11,8 +11,10 @@ export default function Window({
   onClose,
   onMinimize,
   onFocus,
+  onToggleFullscreen,
   isFocused,
   isMinimized,
+  isFullscreen,
   zIndex,
 }) {
   const [pos, setPos]   = useState(defaultPosition)
@@ -51,9 +53,10 @@ export default function Window({
       transition={{ duration: 0.14, ease: [0.2, 0, 0.2, 1] }}
       className="absolute flex flex-col"
       style={{
-        left: pos.x, top: pos.y,
-        width:  size.width,
-        height: size.height,
+        left: isFullscreen ? 0 : pos.x, 
+        top: isFullscreen ? 0 : pos.y,
+        width:  isFullscreen ? '100vw' : size.width,
+        height: isFullscreen ? 'calc(100vh - 34px)' : size.height,
         zIndex: isMinimized ? -1 : zIndex,
         
         background: isFocused
@@ -65,12 +68,14 @@ export default function Window({
           ? '2px 2px 0 #555, 4px 6px 20px rgba(0,0,0,0.45)'
           : '1px 1px 0 #555, 2px 3px 10px rgba(0,0,0,0.3)',
         overflow: 'hidden',
+        transition: isFullscreen ? 'all 0.2s ease-out' : 'none',
       }}
       onMouseDown={() => onFocus(id)}
     >
       
       <div
         onMouseDown={onDragStart}
+        onDoubleClick={() => onToggleFullscreen && onToggleFullscreen(id)}
         className="flex items-center gap-1.5 shrink-0 cursor-move select-none px-2"
         style={{
           height: 28,

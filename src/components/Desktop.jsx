@@ -131,6 +131,7 @@ export default function Desktop() {
   const [focusedId,   setFocusedId]   = useState(null)
   const [topZ,        setTopZ]        = useState(10)
   const [selectedIcon,setSelectedIcon]= useState(null)
+  const [fullscreenId, setFullscreenId] = useState(null)
 
   const openApp = (appId) => {
     const existing = windows.find(w => w.id === appId)
@@ -173,6 +174,16 @@ export default function Desktop() {
     setWindows(prev => prev.map(w => w.id === id ? { ...w, zIndex: nextZ } : w))
     setFocusedId(id)
   }
+
+  const toggleFullscreen = (id) => {
+    if (fullscreenId === id) {
+      setFullscreenId(null)
+    } else {
+      setFullscreenId(id)
+      focusWindow(id)
+    }
+  }
+
   const handleTaskbarClick = (id) => {
     const win = windows.find(w => w.id === id)
     if (!win) return
@@ -228,8 +239,10 @@ export default function Desktop() {
                 onClose={closeWindow}
                 onMinimize={minimizeWindow}
                 onFocus={focusWindow}
+                onToggleFullscreen={toggleFullscreen}
                 isFocused={focusedId === win.id}
                 isMinimized={win.minimized}
+                isFullscreen={fullscreenId === win.id}
                 zIndex={win.zIndex}
               >
                 <AppComponent />
