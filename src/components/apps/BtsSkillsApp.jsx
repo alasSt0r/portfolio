@@ -9,7 +9,7 @@ export default function BtsSkillsApp() {
   // 3. Choisissez "Intégrer" et copiez l'URL de l'iframe
   // 4. Collez-la ci-dessous en remplacement de VOTRE_SHEET_URL
   
-  const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vReP2GYYda0yak2gxDtQifgglinSO9ffEozkkZAjCGIPcaM3_rFfb4H6NOVhRa4xw/pubhtml?gid=1952801044&amp;single=true&amp;widget=true&amp;headers=false"
+  const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSESXgs_HFnl8a2WbGDKjoqF-Xj2soCudhldsXqDTA7bsHHxv-mPkA93WSlokP52g/pubhtml?gid=1952801044&amp;single=true&amp;widget=true&amp;headers=false"
 
   const [zoom, setZoom] = useState(0.7) // Démarrage à 70% pour voir plus de contenu
 
