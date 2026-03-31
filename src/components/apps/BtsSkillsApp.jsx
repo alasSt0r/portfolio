@@ -1,8 +1,6 @@
 import { useState } from 'react'
 
 export default function BtsSkillsApp() {
-  // ⚠️ IMPORTANT : Remplacez cette URL par votre lien Google Sheets
-  // 
   // Pour obtenir le lien :
   // 1. Ouvrez votre Google Sheet
   // 2. Fichier → Partager → Publier sur le Web
