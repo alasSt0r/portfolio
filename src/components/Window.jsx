@@ -48,15 +48,15 @@ export default function Window({
         scale:   isMinimized ? 0.85 : 1,
         y:       isMinimized ? 20 : 0,
         pointerEvents: isMinimized ? 'none' : 'auto',
-      }}
-      exit={{ opacity: 0, scale: 0.95, y: 6 }}
-      transition={{ duration: 0.14, ease: [0.2, 0, 0.2, 1] }}
-      className="absolute flex flex-col"
-      style={{
         left: isFullscreen ? 0 : pos.x, 
         top: isFullscreen ? 0 : pos.y,
         width:  isFullscreen ? '100vw' : size.width,
         height: isFullscreen ? 'calc(100vh - 34px)' : size.height,
+      }}
+      exit={{ opacity: 0, scale: 0.95, y: 6 }}
+      transition={{ duration: 0.2, ease: [0.2, 0, 0.2, 1] }}
+      className="absolute flex flex-col"
+      style={{
         zIndex: isMinimized ? -1 : zIndex,
         
         background: isFocused
@@ -68,7 +68,6 @@ export default function Window({
           ? '2px 2px 0 #555, 4px 6px 20px rgba(0,0,0,0.45)'
           : '1px 1px 0 #555, 2px 3px 10px rgba(0,0,0,0.3)',
         overflow: 'hidden',
-        transition: isFullscreen ? 'all 0.2s ease-out' : 'none',
       }}
       onMouseDown={() => onFocus(id)}
     >
